@@ -108,19 +108,6 @@ public class AppUser {
     }
 
     @Override
-    public String toString() {
-        return "AppUser{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfRegistration=" + dateOfRegistration +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -134,4 +121,78 @@ public class AppUser {
     public int hashCode() {
         return id.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfRegistration=" + dateOfRegistration +
+                '}';
+    }
+
+    public static class UserBuilder {
+        private String name;
+        private String lastName;
+        private String login;
+        private String password;
+        private String email;
+        private Date dateOfRegistration;
+
+        public static UserBuilder getBuilder() {
+            return new UserBuilder();
+        }
+
+        public UserBuilder login(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public UserBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public UserBuilder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserBuilder dateOfRegistration(Date dateOfRegistration) {
+            this.dateOfRegistration = dateOfRegistration;
+            return this;
+        }
+
+        public AppUser build() {
+            AppUser user = new AppUser();
+            user.setLogin(this.login);
+            user.setName(this.name);
+            user.setLastName(this.lastName);
+            user.setPassword(this.password);
+            user.setEmail(this.email);
+            user.setDateOfRegistration(this.dateOfRegistration);
+            return user;
+        }
+
+    }
+
+
+
+
+
+
 }
