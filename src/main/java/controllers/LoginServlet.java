@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             }
         }
 // if login and password are not null it means that client has cookies(LOGIN, PASSWORD) already saved.
-// so doPost method can be invoked with login and password taken from them.
+// so doPost method can be invoked(odwołać się do) with login and password taken from them.
         if (login != null && password != null) {
             req.setAttribute(LOGIN, login);
             req.setAttribute(PASSWORD, password);
@@ -70,6 +70,8 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute(ERRORS, errors);
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
+
+        req.getSession().setAttribute(LOGIN, login);
 
         if (isRememberChecked) {
             Cookie loginCookie = new Cookie(LOGIN, login);   // tu jest mechanizm tworzenia ciastek

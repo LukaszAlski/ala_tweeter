@@ -1,5 +1,8 @@
 package utils;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 public class ServletsUtils {
     public static final String LOGIN = "login";
     public static final String NAME = "name";
@@ -15,7 +18,13 @@ public class ServletsUtils {
     public static final String REPEATED_PASSWORD = "repeatedPassword";
     public static final String REMEMBER = "remember";
     public static final String COOKIE_CHECKED = "on";
+    public static final String FOLLOWED_USERS = "followedUsers";
+    public static final String NOT_FOLLOWED_USERS = "notFollowedUsers";
 
+
+    public static String getUserLoginFromSession(HttpServletRequest req) {
+        return (String) req.getSession().getAttribute(LOGIN);
+    }
 
 
 }

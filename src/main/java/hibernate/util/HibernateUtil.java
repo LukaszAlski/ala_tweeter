@@ -36,7 +36,7 @@ public class HibernateUtil {
         }
     }
 
-    public void save (Object object) {
+    public void save(Object object) {
         entityManager.getTransaction().begin();
         if (!entityManager.contains(object)) {
             entityManager.persist(object);
@@ -45,14 +45,14 @@ public class HibernateUtil {
         entityManager.getTransaction().commit();
     }
 
-    public void delete (Class clazz, Long id){
+    public void delete(Class clazz, Long id) {
         entityManager.getTransaction().begin();
         Object toRemove = entityManager.find(clazz, id);
         entityManager.remove(toRemove);
         entityManager.getTransaction().commit();
     }
 
-    public EntityManager getEntityManager(){
+    public EntityManager getEntityManager() {
         return entityManager;
     }
 
