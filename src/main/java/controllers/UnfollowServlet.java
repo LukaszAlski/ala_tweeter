@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static utils.ServletsUtils.FOLLOWED_USERS;
-import static utils.ServletsUtils.NOT_FOLLOWED_USERS;
+import static utils.ServletsUtils.USER_LOGIN_TO_FOLLOW;
+import static utils.ServletsUtils.USER_LOGIN_TO_UNFOLLOW;
 
-@WebServlet(name = "UsersServlet", value = "/users")
-public class UsersServlet extends HttpServlet {
-
+@WebServlet(name = "UnfollowServlet", value = "/unfollow")
+public class UnfollowServlet extends HttpServlet {
     private UserManagementService service;
 
     @Override
@@ -36,9 +35,10 @@ public class UsersServlet extends HttpServlet {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
             return;
         }
-        req.setAttribute(FOLLOWED_USERS, service.getFollowedUsers(userLoginFromSession));
-        req.setAttribute(NOT_FOLLOWED_USERS, service.getNotFollowedUsers(userLoginFromSession));
-        req.getRequestDispatcher("/users.jsp").forward(req, resp);
+
+        String userLoginToUnfollow = req.getParameter(USER_LOGIN_TO_UNFOLLOW);
+        service.stopFollowing(userLoginFromSession, userLoginToUnfollow);
+        req.getRequestDispatcher("users").forward(req, resp);
+
     }
 }
-

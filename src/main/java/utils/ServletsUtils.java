@@ -20,6 +20,8 @@ public class ServletsUtils {
     public static final String COOKIE_CHECKED = "on";
     public static final String FOLLOWED_USERS = "followedUsers";
     public static final String NOT_FOLLOWED_USERS = "notFollowedUsers";
+    public static final String USER_LOGIN_TO_FOLLOW = "userLoginToFollow";
+    public static final String USER_LOGIN_TO_UNFOLLOW = "userLoginToUnfollow";
 
 
     public static String getUserLoginFromSession(HttpServletRequest req) {
