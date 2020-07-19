@@ -36,6 +36,7 @@ public class AppUserDao extends AbstractDao implements UserDao {
         return selectByEmailQuery.setParameter("email", email).getSingleResult();
     }
 
+// here must be done clearing catches after this operation!!!
     @Override
     public AppUser getUserByLogin(String login) throws NoResultException {
         TypedQuery<AppUser> selectByLoginQuery = entityManager

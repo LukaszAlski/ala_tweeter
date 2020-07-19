@@ -13,6 +13,8 @@ public class ServletsUtils {
     public static final String ERROR_EMAIL_REG_MESSAGE = "Typed email is already in use";
     public static final String ERROR_LOGIN_MESSAGE = "Login or password is invalid";
     public static final String REPEATED_PASSWORD = "repeatedPassword";
+    public static final String REMEMBER = "remember";
+    public static final String COOKIE_CHECKED = "on";
 
 
 
